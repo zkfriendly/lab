@@ -5,18 +5,10 @@ edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
-[[bin]]
-name = "example1"
-path = "src/example1.rs"
+[lib]
+name = "zkG"
+path = "src/lib.rs"
 
-[[bin]]
-name = "example2"
-path = "src/example2.rs"
-
-
-[[bin]]
-name = "is_zero"
-path = "src/is_zero.rs"
 
 [dependencies]
 halo2_proofs = "0.1.0"
