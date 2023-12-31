@@ -38,11 +38,11 @@ impl<F: FieldExt> FiboChip<F> {
 
         // col_a  | col_b  | col_c | selector
         //   a       b         c       s
-        meta.create_gate("add", |meta| {
-            let s = meta.query_selector(selector);
-            let a = meta.query_advice(advice, Rotation::cur());
-            let b = meta.query_advice(advice, Rotation::next());
-            let c = meta.query_advice(advice, Rotation(2));
+        meta.create_gate("add", |vcell| {
+            let s = vcell.query_selector(selector);
+            let a = vcell.query_advice(advice, Rotation::cur());
+            let b = vcell.query_advice(advice, Rotation::next());
+            let c = vcell.query_advice(advice, Rotation(2));
             vec![s * (a + b - c)]
         });
 
