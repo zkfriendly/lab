@@ -62,6 +62,7 @@ impl<F: FieldExt> FiboChip<F> {
             || "first row",
             |mut region| {
                 self.config.selector.enable(&mut region, 0)?;
+                self.config.selector.enable(&mut region, 1)?;
                 let mut a_cell = region.assign_advice_from_instance(
                     || "f(0)",
                     self.config.instance,
@@ -73,7 +74,7 @@ impl<F: FieldExt> FiboChip<F> {
                 let mut b_cell = region.assign_advice_from_instance(
                     || "f(1)",
                     self.config.instance,
-                    0,
+                    1,
                     self.config.advice,
                     1,
                 )?;
