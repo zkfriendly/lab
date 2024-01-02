@@ -1,3 +1,3 @@
-mod example1;
-mod example2;
-mod example3;
+mod eg1_simple;
+mod eg2_lookup;
+mod eg3_numbits;
