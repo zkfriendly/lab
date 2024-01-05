@@ -1,13 +1,13 @@
 use halo2_proofs::{
     arithmetic::FieldExt,
-    circuit::{layouter, Layouter},
+    circuit::Layouter,
     plonk::{ConstraintSystem, Error, TableColumn},
 };
 
 /// a lookup table of values of NUM_BITS length
 /// num_bits = 3 => 8 values
 
-#[derive(Clone)]
+#[derive(Clone, Debug)]
 pub(super) struct RangeCheckTable<F: FieldExt, const NUM_BITS: usize> {
     pub(super) value: TableColumn,
     pub(super) num_bits: TableColumn,
