@@ -1,12 +1,12 @@
 #![cfg_attr(not(feature = "std"), no_std, no_main)]
 
 #[ink::contract]
-pub mod MyToken {
+pub mod ZkToken {
     use ink::storage::Mapping;
 
     #[ink(storage)]
     #[derive(Default)]
-    pub struct MyToken {
+    pub struct ZkToken {
         total_supply: Balance,
         balances: Mapping<AccountId, Balance>,
     }
@@ -17,7 +17,7 @@ pub mod MyToken {
         InsufficientBalance,
     }
 
-    impl MyToken {
+    impl ZkToken {
         #[ink(constructor)]
         pub fn new(total_supply: Balance) -> Self {
             let mut balances = Mapping::default();
@@ -61,17 +61,17 @@ pub mod MyToken {
 
     #[cfg(test)]
     mod test {
-        use super::*;
+        use crate::ZkToken::ZkToken;
 
         #[ink::test]
         fn test_total_supply() {
-            let token = MyToken::new(100);
+            let token = ZkToken::new(100);
             assert_eq!(token.total_supply(), 100);
         }
 
         #[ink::test]
         fn test_balance_of() {
-            let token = MyToken::new(100);
+            let token = ZkToken::new(100);
             let accounts = ink::env::test::default_accounts::<ink::env::DefaultEnvironment>();
 
             let alice_balance = token.balance_of(accounts.alice);
@@ -80,7 +80,7 @@ pub mod MyToken {
 
         #[ink::test]
         fn test_transfer() {
-            let mut token = MyToken::new(100);
+            let mut token = ZkToken::new(100);
             let accounts = ink::env::test::default_accounts::<ink::env::DefaultEnvironment>();
 
             let alice_before_balance = token.balance_of(accounts.alice);
