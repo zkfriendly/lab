@@ -4,7 +4,11 @@ function App() {
   let items = ["Berlin", "Paris", "London", "New York"];
   return (
     <div>
-      <ListGroup items={items} heading="Cities" />
+      <ListGroup
+        items={items}
+        heading="Cities"
+        onSelectedIndexChange={console.log}
+      />
     </div>
   );
 }
